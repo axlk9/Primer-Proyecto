@@ -1,11 +1,13 @@
-// Función para calcular el índice de masa corporal (IMC)
-function calcularIMC(peso, altura) {
-    return peso / (altura * altura);
+function calcularIMC() {
+    let peso = parseFloat(document.getElementById('peso').value);
+    let altura = parseFloat(document.getElementById('altura').value);
+
+    if (isNaN(peso) || isNaN(altura)) {
+        alert('Por favor, ingrese valores válidos.');
+        return;
+    }
+
+    let imc = peso / (altura * altura);
+    document.getElementById('resultado').textContent = `Tu índice de masa corporal (IMC) es: ${imc.toFixed(2)}`;
+    return imc;
 }
-
-// Ejemplo de uso
-let peso = parseFloat(prompt("Ingrese su peso en kilogramos"));
-let altura = parseFloat(prompt("Ingrese su altura en metros"));
-
-let imc = calcularIMC(peso, altura);
-alert(`Tu índice de masa corporal (IMC) es: ${imc.toFixed(2)}`);
