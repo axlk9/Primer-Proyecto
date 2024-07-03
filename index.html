@@ -1,20 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de IMC</title>
+             <p>INGRESE DATOS</p>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <label for="peso">Peso (kg):</label>
-    <input type="number" id="peso" step="0.1">
-    <br>
-    <label for="altura">Altura (m):</label>
-    <input type="number" id="altura" step="0.01">
-    <br>
-    <button onclick="calcularIMC()">Calcular IMC</button>
-    <p id="resultado"></p>
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+        <div class="input-group">
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso" step="0.1" placeholder="Ej: 70">
+        </div>
+        <div class="input-group">
+            <label for="altura">Altura (m):</label>
+            <input type="number" id="altura" step="0.01" placeholder="Ej: 1.75">
+        </div>
+        <button onclick="calcularIMC()">Calcular IMC</button>
+        <div id="resultado"></div>
+    </div>
 
-    <script src="mipro.js"></script>
+    <script>
+        function calcularIMC() {
+            let peso = parseFloat(document.getElementById('peso').value);
+            let altura = parseFloat(document.getElementById('altura').value);
+
+            if (isNaN(peso) || isNaN(altura)) {
+                alert('Por favor, ingrese valores válidos.');
+                return;
+            }
+
+            let imc = peso / (altura * altura);
+            document.getElementById('resultado').textContent = `Tu índice de masa corporal (IMC) es: ${imc.toFixed(2)}`;
+            return imc;
+        }
+    </script>
 </body>
 </html>
+
+
